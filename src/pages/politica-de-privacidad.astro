@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Política de Privacidad | Dra. Agustina González"
+  description="Política de privacidad del sitio web de la Dra. Agustina González, dermatocosmiatra en Asunción, Paraguay."
+  canonical="https://agustinagonzalez.com.py/politica-de-privacidad"
+>
+  <Header slot="header" />
+
+  <section class="py-16 sm:py-20 bg-white-off">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="label-overline mb-4">Legal</p>
+      <h1 class="font-heading text-4xl font-normal text-text mb-2">Política de Privacidad</h1>
+      <div class="w-8 h-px bg-taupe mb-8"></div>
+
+      <div class="prose prose-sm max-w-none text-text-light space-y-6 leading-relaxed">
+        <p class="text-sm text-text-light">Última actualización: abril 2026</p>
+
+        <h2 class="font-heading text-xl font-normal text-text mt-8 mb-3">1. Responsable del tratamiento</h2>
+        <p>Dra. Agustina González, dermatocosmiatra con consultorio en Airea Clínica Boutique, Barrio Santísima Trinidad, Asunción, Paraguay. Contacto: <a href="https://wa.me/595971614156" class="text-taupe-deep hover:underline">WhatsApp 0971 614156</a>.</p>
+
+        <h2 class="font-heading text-xl font-normal text-text mt-8 mb-3">2. Datos que recopilamos</h2>
+        <p>Este sitio web no recopila datos personales de forma automática. Si nos contactás por WhatsApp, tus datos (nombre, teléfono, consulta) son utilizados exclusivamente para responder tu mensaje y coordinar turnos. No compartimos esta información con terceros.</p>
+
+        <h2 class="font-heading text-xl font-normal text-text mt-8 mb-3">3. Cookies y analytics</h2>
+        <p>Podemos utilizar Google Analytics para medir el tráfico del sitio de forma anónima. Google Analytics puede usar cookies de sesión. No almacenamos información personal identificable a través de estas herramientas.</p>
+
+        <h2 class="font-heading text-xl font-normal text-text mt-8 mb-3">4. Tus derechos</h2>
+        <p>Tenés derecho a acceder, rectificar o eliminar cualquier dato personal que nos hayas proporcionado. Para ejercer estos derechos, contactanos por WhatsApp.</p>
+
+        <h2 class="font-heading text-xl font-normal text-text mt-8 mb-3">5. Cambios a esta política</h2>
+        <p>Podemos actualizar esta política en cualquier momento. La fecha de última actualización siempre estará indicada al inicio de esta página.</p>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

@@ -21,6 +21,7 @@ import Footer from '../components/Footer.astro';
             alt="Dra. Agustina González, dermatocosmiatra en Asunción"
             class="w-full aspect-[3/4] object-cover rounded-sm"
             loading="eager"
+            fetchpriority="high"
             width="675"
             height="900"
           />
@@ -130,6 +131,39 @@ import Footer from '../components/Footer.astro';
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tratamientos que ofrezco -->
+  <section class="py-24 bg-cream reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10">
+        <p class="label-overline mb-4">Lo que hago</p>
+        <h2 class="font-heading text-3xl sm:text-4xl font-normal text-text">Tratamientos</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[
+          { href: '/servicios/mesoterapia-facial-asuncion', label: 'Mesoterapia Facial' },
+          { href: '/servicios/tratamiento-antiaging-asuncion', label: 'Tratamiento Antiaging' },
+          { href: '/servicios/exosomas-mediderma-asuncion', label: 'Exosomas Mediderma' },
+          { href: '/servicios/cellbooster-glow-asuncion', label: 'Cellbooster Glow' },
+          { href: '/servicios/pdrn-salmon-mediderma-asuncion', label: 'PDRN de Salmón Mediderma' },
+          { href: '/servicios/plasma-rico-plaquetas-asuncion', label: 'Plasma Rico en Plaquetas' },
+          { href: '/servicios/tratamiento-ojeras-asuncion', label: 'Tratamiento de Ojeras' },
+          { href: '/servicios/limpieza-facial-profunda-asuncion', label: 'Limpieza Profunda + Peeling' },
+          { href: '/servicios/mesoterapia-despigmentante-asuncion', label: 'Mesoterapia Despigmentante' },
+        ].map(({ href, label }) => (
+          <a href={href} class="border border-cream-dark bg-white-off px-5 py-4 text-sm text-text-secondary hover:border-taupe transition-colors flex items-center justify-between gap-2 group">
+            {label}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-40 group-hover:opacity-100 transition-opacity shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        ))}
+      </div>
+      <div class="mt-6">
+        <a href="/servicios" class="btn-text">Ver todos los tratamientos
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
   </section>

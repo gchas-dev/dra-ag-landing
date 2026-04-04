@@ -15,12 +15,14 @@ const {
   ogImage = '/images/og-default.webp'
 } = Astro.props;
 
-const siteName = 'Dra. Agustina González — Dermatocosmiatra en Asunción';
+const siteName = 'Dra. Agustina González - Estética Facial en Asunción';
 
 const schemaLocalBusiness = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
+  "@id": "https://agustinagonzalez.com.py/#business",
   "name": "Dra. Agustina González - Dermatocosmiatra",
+  "description": "Dermatocosmiatra en Asunción, Paraguay. Tratamientos faciales personalizados: mesoterapia, antiaging, exosomas, plasma rico en plaquetas y más. Productos de laboratorios internacionales premium.",
   "url": "https://agustinagonzalez.com.py",
   "telephone": "+595971614156",
   "address": {
@@ -35,7 +37,7 @@ const schemaLocalBusiness = {
     "latitude": -25.2698416,
     "longitude": -57.5648463
   },
-  "image": "https://agustinagonzalez.com.py/images/consultorio.webp",
+  "image": "https://agustinagonzalez.com.py/images/dra-agustina-gonzalez.webp",
   "priceRange": "$$",
   "sameAs": [
     "https://www.instagram.com/draagustinagonzalez",
@@ -61,8 +63,16 @@ const schemaLocalBusiness = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content="es_PY" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -73,7 +83,12 @@ const schemaLocalBusiness = {
     <link
       href="https://fonts.googleapis.com/css2?family=Lustria&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Lustria&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet" />
+    </noscript>
 
     <!-- Schema.org LocalBusiness -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaLocalBusiness)} />
