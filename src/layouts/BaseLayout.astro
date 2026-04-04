@@ -24,7 +24,7 @@ const schemaLocalBusiness = {
   "name": "Dra. Agustina González - Dermatocosmiatra",
   "description": "Dermatocosmiatra en Asunción, Paraguay. Tratamientos faciales personalizados: mesoterapia, antiaging, exosomas, plasma rico en plaquetas y más. Productos de laboratorios internacionales premium.",
   "url": "https://agustinagonzalez.com.py",
-  "telephone": "+595971614156",
+  "telephone": "+595 971 614156",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Ing. Prof. Nicolás Krisvoschein",
@@ -38,7 +38,42 @@ const schemaLocalBusiness = {
     "longitude": -57.5648463
   },
   "image": "https://agustinagonzalez.com.py/images/dra-agustina-gonzalez.webp",
-  "priceRange": "$$",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Thursday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "12:00"
+    }
+  ],
+  "areaServed": [
+    { "@type": "City", "name": "Asunción" },
+    { "@type": "City", "name": "San Lorenzo" },
+    { "@type": "City", "name": "Luque" },
+    { "@type": "City", "name": "Lambaré" },
+    { "@type": "City", "name": "Fernando de la Mora" },
+    { "@type": "City", "name": "Mariano Roque Alonso" },
+    { "@type": "City", "name": "Villa Elisa" },
+    { "@type": "City", "name": "Capiatá" }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Tratamientos de estética facial",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Mesoterapia Facial" }, "price": "600000", "priceCurrency": "PYG" },
+      { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Tratamiento Antiaging" }, "price": "1000000", "priceCurrency": "PYG" },
+      { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Exosomas Mediderma" }, "price": "1200000", "priceCurrency": "PYG" },
+      { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Plasma Rico en Plaquetas" }, "price": "800000", "priceCurrency": "PYG" },
+      { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Limpieza Facial Profunda" }, "price": "380000", "priceCurrency": "PYG" }
+    ]
+  },
+  "priceRange": "Gs 300.000 – Gs 1.200.000",
   "sameAs": [
     "https://www.instagram.com/draagustinagonzalez",
     "https://www.facebook.com/61580337374705/"
@@ -65,6 +100,7 @@ const schemaLocalBusiness = {
     <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Dra. Agustina González - Estética Facial en Asunción, Paraguay" />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content="es_PY" />
 

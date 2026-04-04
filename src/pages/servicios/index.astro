@@ -13,7 +13,7 @@ const categories = [
 ---
 
 <BaseLayout
-  title="Servicios de Estética Facial en Asunción | Dra. Agustina González"
+  title="Estética Facial Asunción — Tratamientos | Dra. Agustina González"
   description="Todos los tratamientos faciales de la Dra. Agustina González en Asunción. Mesoterapia, antiaging, exosomas, PRP, limpieza profunda y más. Precios y detalles."
   canonical="https://agustinagonzalez.com.py/servicios"
 >
@@ -77,6 +77,15 @@ const categories = [
       </a>
     </div>
   </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://agustinagonzalez.com.py/" },
+      { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://agustinagonzalez.com.py/servicios" }
+    ]
+  })} />
 
   <Footer slot="footer" />
 </BaseLayout>
