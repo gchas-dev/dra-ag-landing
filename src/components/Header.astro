@@ -41,6 +41,34 @@ const currentPath = Astro.url.pathname;
           </a>
         </li>
       ))}
+
+      <!-- Country switcher -->
+      <li class="flex items-center gap-1.5 border-l border-cream-dark pl-6">
+        <!-- PY — activo -->
+        <span
+          title="Paraguay"
+          aria-label="Sitio Paraguay (activo)"
+          class="flex flex-col overflow-hidden rounded-sm ring-2 ring-taupe/60 cursor-default"
+          style="width:24px;height:16px;"
+        >
+          <span style="flex:1;background:#D52B1E;"></span>
+          <span style="flex:1;background:#fff;"></span>
+          <span style="flex:1;background:#0038A8;"></span>
+        </span>
+        <!-- AR — link -->
+        <a
+          href="https://agustinagonzalez.com.ar"
+          title="Argentina"
+          aria-label="Ir al sitio de Argentina"
+          class="flex flex-col overflow-hidden rounded-sm opacity-50 hover:opacity-100 transition-opacity"
+          style="width:24px;height:16px;"
+        >
+          <span style="flex:1;background:#74ACDF;"></span>
+          <span style="flex:1;background:#fff;"></span>
+          <span style="flex:1;background:#74ACDF;"></span>
+        </a>
+      </li>
+
       <li>
         <a
           href="https://wa.me/595971614156"
@@ -94,6 +122,28 @@ const currentPath = Astro.url.pathname;
             class="btn-primary block text-center py-3"
           >
             Agendá tu turno
+          </a>
+        </li>
+        <li class="pt-4 border-t border-cream-dark/60 flex items-center gap-3">
+          <span class="text-xs text-text-light tracking-wide">Sitio:</span>
+          <span
+            title="Paraguay (activo)"
+            class="flex flex-col overflow-hidden rounded-sm ring-2 ring-taupe/60"
+            style="width:24px;height:16px;"
+          >
+            <span style="flex:1;background:#D52B1E;"></span>
+            <span style="flex:1;background:#fff;"></span>
+            <span style="flex:1;background:#0038A8;"></span>
+          </span>
+          <a
+            href="https://agustinagonzalez.com.ar"
+            title="Ir al sitio de Argentina"
+            class="flex flex-col overflow-hidden rounded-sm opacity-50 hover:opacity-100 transition-opacity"
+            style="width:24px;height:16px;"
+          >
+            <span style="flex:1;background:#74ACDF;"></span>
+            <span style="flex:1;background:#fff;"></span>
+            <span style="flex:1;background:#74ACDF;"></span>
           </a>
         </li>
       </ul>
