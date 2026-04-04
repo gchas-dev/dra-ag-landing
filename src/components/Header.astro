@@ -42,33 +42,6 @@ const currentPath = Astro.url.pathname;
         </li>
       ))}
 
-      <!-- Country switcher -->
-      <li class="flex items-center gap-1.5 border-l border-cream-dark pl-6">
-        <!-- PY — activo -->
-        <span
-          title="Paraguay"
-          aria-label="Sitio Paraguay (activo)"
-          class="flex flex-col overflow-hidden rounded-sm ring-2 ring-taupe/60 cursor-default"
-          style="width:24px;height:16px;"
-        >
-          <span style="flex:1;background:#D52B1E;"></span>
-          <span style="flex:1;background:#fff;"></span>
-          <span style="flex:1;background:#0038A8;"></span>
-        </span>
-        <!-- AR — link -->
-        <a
-          href="https://agustinagonzalez.com.ar"
-          title="Argentina"
-          aria-label="Ir al sitio de Argentina"
-          class="flex flex-col overflow-hidden rounded-sm opacity-50 hover:opacity-100 transition-opacity"
-          style="width:24px;height:16px;"
-        >
-          <span style="flex:1;background:#74ACDF;"></span>
-          <span style="flex:1;background:#fff;"></span>
-          <span style="flex:1;background:#74ACDF;"></span>
-        </a>
-      </li>
-
       <li>
         <a
           href="https://wa.me/595971614156"
@@ -80,21 +53,123 @@ const currentPath = Astro.url.pathname;
           Agendá tu turno
         </a>
       </li>
+
+      <!-- Country dropdown -->
+      <li class="relative" id="country-dropdown-wrapper">
+        <button
+          id="country-btn"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-label="Seleccionar país"
+          class="flex items-center gap-1.5 p-1.5 rounded-sm hover:bg-cream transition-colors"
+        >
+          <!-- PY flag -->
+          <span class="flex flex-col overflow-hidden rounded-sm" style="width:22px;height:15px;" aria-hidden="true">
+            <span style="flex:1;background:#D52B1E;"></span>
+            <span style="flex:1;background:#fff;"></span>
+            <span style="flex:1;background:#0038A8;"></span>
+          </span>
+          <!-- Chevron -->
+          <svg id="country-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-text-light transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+
+        <!-- Dropdown -->
+        <div
+          id="country-menu"
+          role="listbox"
+          aria-label="Seleccionar país"
+          class="absolute right-0 top-full mt-2 bg-white-off border border-cream-dark shadow-sm rounded-sm overflow-hidden hidden"
+          style="min-width: 148px;"
+        >
+          <!-- PY — activo -->
+          <div
+            role="option"
+            aria-selected="true"
+            class="flex items-center gap-3 px-4 py-3 bg-cream cursor-default"
+          >
+            <span class="flex flex-col overflow-hidden rounded-sm shrink-0" style="width:22px;height:15px;">
+              <span style="flex:1;background:#D52B1E;"></span>
+              <span style="flex:1;background:#fff;"></span>
+              <span style="flex:1;background:#0038A8;"></span>
+            </span>
+            <span class="text-sm font-medium text-text">Paraguay</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-taupe ml-auto"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <!-- AR — link -->
+          <a
+            href="https://agustinagonzalez.com.ar"
+            role="option"
+            aria-selected="false"
+            class="flex items-center gap-3 px-4 py-3 hover:bg-cream transition-colors"
+          >
+            <span class="flex flex-col overflow-hidden rounded-sm shrink-0" style="width:22px;height:15px;">
+              <span style="flex:1;background:#74ACDF;"></span>
+              <span style="flex:1;background:#fff;"></span>
+              <span style="flex:1;background:#74ACDF;"></span>
+            </span>
+            <span class="text-sm text-text-light">Argentina</span>
+          </a>
+        </div>
+      </li>
     </ul>
 
     <!-- Mobile menu button -->
-    <button
-      id="mobile-menu-btn"
-      class="md:hidden p-2 text-text-light"
-      aria-label="Abrir menú"
-      aria-expanded="false"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="6" x2="21" y2="6" />
-        <line x1="3" y1="12" x2="21" y2="12" />
-        <line x1="3" y1="18" x2="21" y2="18" />
-      </svg>
-    </button>
+    <div class="md:hidden flex items-center gap-2">
+      <!-- Country dropdown mobile -->
+      <div class="relative" id="country-dropdown-wrapper-mobile">
+        <button
+          id="country-btn-mobile"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-label="Seleccionar país"
+          class="flex items-center gap-1 p-1.5 rounded-sm hover:bg-cream transition-colors"
+        >
+          <span class="flex flex-col overflow-hidden rounded-sm" style="width:22px;height:15px;" aria-hidden="true">
+            <span style="flex:1;background:#D52B1E;"></span>
+            <span style="flex:1;background:#fff;"></span>
+            <span style="flex:1;background:#0038A8;"></span>
+          </span>
+          <svg id="country-chevron-mobile" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-text-light transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div
+          id="country-menu-mobile"
+          role="listbox"
+          class="absolute right-0 top-full mt-2 bg-white-off border border-cream-dark shadow-sm rounded-sm overflow-hidden hidden"
+          style="min-width: 148px; z-index: 50;"
+        >
+          <div role="option" aria-selected="true" class="flex items-center gap-3 px-4 py-3 bg-cream cursor-default">
+            <span class="flex flex-col overflow-hidden rounded-sm shrink-0" style="width:22px;height:15px;">
+              <span style="flex:1;background:#D52B1E;"></span>
+              <span style="flex:1;background:#fff;"></span>
+              <span style="flex:1;background:#0038A8;"></span>
+            </span>
+            <span class="text-sm font-medium text-text">Paraguay</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-taupe ml-auto"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <a href="https://agustinagonzalez.com.ar" role="option" aria-selected="false" class="flex items-center gap-3 px-4 py-3 hover:bg-cream transition-colors">
+            <span class="flex flex-col overflow-hidden rounded-sm shrink-0" style="width:22px;height:15px;">
+              <span style="flex:1;background:#74ACDF;"></span>
+              <span style="flex:1;background:#fff;"></span>
+              <span style="flex:1;background:#74ACDF;"></span>
+            </span>
+            <span class="text-sm text-text-light">Argentina</span>
+          </a>
+        </div>
+      </div>
+
+      <button
+        id="mobile-menu-btn"
+        class="p-2 text-text-light"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </div>
   </nav>
 
   <!-- Mobile menu — grid transition trick -->
@@ -124,38 +199,41 @@ const currentPath = Astro.url.pathname;
             Agendá tu turno
           </a>
         </li>
-        <li class="pt-4 border-t border-cream-dark/60 flex items-center gap-3">
-          <span class="text-xs text-text-light tracking-wide">Sitio:</span>
-          <span
-            title="Paraguay (activo)"
-            class="flex flex-col overflow-hidden rounded-sm ring-2 ring-taupe/60"
-            style="width:24px;height:16px;"
-          >
-            <span style="flex:1;background:#D52B1E;"></span>
-            <span style="flex:1;background:#fff;"></span>
-            <span style="flex:1;background:#0038A8;"></span>
-          </span>
-          <a
-            href="https://agustinagonzalez.com.ar"
-            title="Ir al sitio de Argentina"
-            class="flex flex-col overflow-hidden rounded-sm opacity-50 hover:opacity-100 transition-opacity"
-            style="width:24px;height:16px;"
-          >
-            <span style="flex:1;background:#74ACDF;"></span>
-            <span style="flex:1;background:#fff;"></span>
-            <span style="flex:1;background:#74ACDF;"></span>
-          </a>
-        </li>
       </ul>
     </div>
   </div>
 </header>
 
 <script>
+  // Mobile nav
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   btn?.addEventListener('click', () => {
     const isOpen = menu?.classList.toggle('is-open');
     btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
+
+  // Country dropdown (desktop + mobile)
+  function setupDropdown(btnId: string, menuId: string, chevronId: string) {
+    const trigger = document.getElementById(btnId);
+    const dropdown = document.getElementById(menuId);
+    const chevron = document.getElementById(chevronId);
+    if (!trigger || !dropdown) return;
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dropdown.classList.toggle('hidden');
+      trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      if (chevron) chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
+    });
+
+    document.addEventListener('click', () => {
+      dropdown.classList.add('hidden');
+      trigger.setAttribute('aria-expanded', 'false');
+      if (chevron) chevron.style.transform = '';
+    });
+  }
+
+  setupDropdown('country-btn', 'country-menu', 'country-chevron');
+  setupDropdown('country-btn-mobile', 'country-menu-mobile', 'country-chevron-mobile');
 </script>
