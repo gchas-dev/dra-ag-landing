@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const seo = {
+  title: "Preguntas Frecuentes | Dra. Agustina González — Dermatocosmiatra en Asunción",
+  description: "Respuestas a las preguntas más comunes sobre tratamientos de estética facial en Asunción. Mesoterapia, exosomas, antiaging y más. Dra. Agustina González.",
+  canonical: "https://agustinagonzalez.com.py/faq"
+};
+
+const faqCategories = [
+  {
+    title: "Sobre los tratamientos",
+    faqs: [
+      {
+        question: "¿Qué tratamientos faciales ofrecés?",
+        answer: "Ofrezco una amplia variedad de tratamientos faciales sin cirugía: mesoterapia facial, tratamiento antiaging, exosomas, plasma rico en plaquetas, tratamiento de ojeras con NCTF, PDRN de salmón, Cellbooster Glow, ampollas de caviar Janssen, mesoterapia capilar, mesoterapia despigmentante, Hydralips, limpieza profunda con peeling, y tratamientos para rosácea y acné."
+      },
+      {
+        question: "¿Los tratamientos son dolorosos?",
+        answer: "La mayoría de los tratamientos incluyen la aplicación de anestesia tópica antes del procedimiento, por lo que las molestias son mínimas. Mis pacientes suelen describirlos como muy tolerables. En tu consulta te explico exactamente qué vas a sentir en cada paso."
+      },
+      {
+        question: "¿Cuándo voy a ver resultados?",
+        answer: "Depende del tratamiento. Muchos muestran resultados visibles desde la primera sesión, como la mesoterapia facial o Cellbooster Glow. Otros tratamientos como los exosomas o el PRP son progresivos y los resultados se van notando con las sesiones y en las semanas siguientes."
+      },
+      {
+        question: "¿Los resultados son naturales?",
+        answer: "Sí, todos mis protocolos buscan resultados naturales. El objetivo es que tu piel se vea mejor, más saludable y rejuvenecida, pero siempre vos. No buscamos cambios drásticos ni aspecto artificial."
+      },
+      {
+        question: "¿Puedo hacer varios tratamientos al mismo tiempo?",
+        answer: "Sí, muchos tratamientos se pueden combinar para potenciar resultados. En tu consulta personalizada evaluamos cuál es la mejor combinación y el orden adecuado para los objetivos de tu piel."
+      }
+    ]
+  },
+  {
+    title: "Sobre la consulta",
+    faqs: [
+      {
+        question: "¿Necesito turno previo?",
+        answer: "Sí, la atención es con turno previo para dedicarte el tiempo necesario. Podés agendar tu turno escribiéndome por WhatsApp al 0971 614156."
+      },
+      {
+        question: "¿Dónde queda el consultorio?",
+        answer: "Mi consultorio está en Airea Clínica Boutique, sobre la calle Ing. Prof. Nicolás Krisvoschein, en el Barrio Santísima Trinidad de Asunción, Paraguay."
+      },
+      {
+        question: "¿Cuánto dura una consulta o sesión?",
+        answer: "Las sesiones de tratamiento duran aproximadamente 1 hora. En tu primera visita dedicamos tiempo adicional para evaluar tu piel y diseñar un plan personalizado."
+      },
+      {
+        question: "¿Aceptás tarjetas de crédito o débito?",
+        answer: "Sí, aceptamos tarjetas de crédito, débito y también transferencias. Consultá por las opciones de pago disponibles al momento de agendar tu turno."
+      }
+    ]
+  },
+  {
+    title: "Sobre la profesional",
+    faqs: [
+      {
+        question: "¿Cuál es tu formación profesional?",
+        answer: "Soy Odontóloga y Dermatocosmiatra, actualmente cursando un posgrado en Armonización Orofacial. Mi doble formación me permite tener una visión integral de la armonía facial, combinando conocimiento médico con técnica estética."
+      },
+      {
+        question: "¿Qué marcas de productos usás?",
+        answer: "Trabajo exclusivamente con marcas internacionales reconocidas: Mesoestetic (laboratorio español), Mediderma (laboratorio español), Janssen Cosmetics (laboratorio alemán) y Cellbooster (marca suiza). Cada producto es seleccionado por su eficacia clínica comprobada."
+      },
+      {
+        question: "¿Por qué elegir a una dermatocosmiatra?",
+        answer: "Una dermatocosmiatra combina el conocimiento de la dermatología con las técnicas de la cosmiatría, lo que me permite ofrecer tratamientos profesionales con respaldo médico. A diferencia de un centro estético convencional, los protocolos son diseñados con criterio clínico y productos de grado médico."
+      }
+    ]
+  },
+  {
+    title: "Precios y sesiones",
+    faqs: [
+      {
+        question: "¿Cuánto cuestan los tratamientos?",
+        answer: "Los precios varían según el tratamiento. Van desde 300.000 Gs (tratamiento de rosácea o acné) hasta 1.200.000 Gs (exosomas o Cellbooster Glow). En la página de cada servicio encontrás el precio detallado, o podés consultarme directamente por WhatsApp."
+      },
+      {
+        question: "¿Cuántas sesiones necesito?",
+        answer: "Depende del tratamiento y del estado de tu piel. Generalmente los protocolos iniciales van de 3 a 6 sesiones, seguidos de mantenimiento periódico. En tu primera consulta te doy un plan personalizado con la cantidad de sesiones recomendada."
+      },
+      {
+        question: "¿Ofrecés paquetes de varias sesiones?",
+        answer: "Consultame por WhatsApp sobre los protocolos de varias sesiones. Diseño planes personalizados según tus necesidades y objetivos."
+      }
+    ]
+  }
+];
+
+// All FAQs flat for schema
+const allFaqs = faqCategories.flatMap(cat => cat.faqs);
+
+const schemaFAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": allFaqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const schemaBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://agustinagonzalez.com.py/" },
+    { "@type": "ListItem", "position": 2, "name": "Preguntas Frecuentes", "item": "https://agustinagonzalez.com.py/faq" }
+  ]
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical}>
+  <Header slot="header" />
+
+  <!-- Breadcrumbs -->
+  <nav class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-6" aria-label="Breadcrumb">
+    <ol class="flex text-sm text-text-light gap-2">
+      <li><a href="/" class="hover:text-taupe transition-colors">Inicio</a></li>
+      <li>/</li>
+      <li class="text-text font-medium">Preguntas Frecuentes</li>
+    </ol>
+  </nav>
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex items-center gap-4 mb-6">
+      <img src="/images/monograma-ag.png" alt="" aria-hidden="true"
+        class="w-8 h-8 object-contain opacity-40"
+        style="filter: brightness(0) saturate(100%) invert(75%) sepia(10%) saturate(400%) hue-rotate(10deg) brightness(90%);" />
+      <div class="h-px flex-1 bg-cream-dark max-w-[60px]"></div>
+    </div>
+    <h1 class="font-heading text-4xl sm:text-5xl font-normal text-text mb-4">Preguntas Frecuentes</h1>
+    <div class="w-8 h-px bg-taupe mb-6"></div>
+    <p class="text-text-light text-lg mb-12 max-w-2xl">
+      Todo lo que necesitás saber antes de tu primera consulta. Si tenés alguna pregunta que no está acá, escribime por WhatsApp.
+    </p>
+
+    <div class="space-y-12">
+      {faqCategories.map((category, i) => (
+        <div>
+          <div class="flex items-baseline gap-4 mb-6">
+            <span class="font-heading text-4xl font-normal text-cream-dark select-none" aria-hidden="true">0{i + 1}</span>
+            <h2 class="font-heading text-2xl font-normal text-text">{category.title}</h2>
+          </div>
+          <div class="space-y-4">
+            {category.faqs.map((faq) => (
+              <details class="group border-b border-cream-dark/50 pb-4">
+                <summary class="cursor-pointer list-none flex items-start justify-between gap-4 font-medium text-text hover:text-taupe transition-colors py-1">
+                  <span>{faq.question}</span>
+                  <span class="text-taupe shrink-0 mt-1 group-open:rotate-45 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  </span>
+                </summary>
+                <p class="mt-3 text-text-light leading-relaxed">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="border-y border-cream-dark py-14 text-center mt-16">
+      <div class="divider-taupe mb-8"></div>
+      <h2 class="font-heading text-2xl sm:text-3xl font-normal text-text mb-3">¿Tenés otra pregunta?</h2>
+      <p class="text-text-light mb-8">Escribime y te respondo personalmente.</p>
+      <a
+        href="https://wa.me/595971614156"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary-wa"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Escribime por WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(schemaFAQ)} />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaBreadcrumb)} />
+
+  <Footer slot="footer" />
+</BaseLayout>

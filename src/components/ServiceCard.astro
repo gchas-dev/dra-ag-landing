@@ -1,0 +1,33 @@
+---
+interface Props {
+  slug: string;
+  name: string;
+  tagline: string;
+  price: string;
+  brand?: string | null;
+}
+
+const { slug, name, tagline, price, brand } = Astro.props;
+---
+
+<a
+  href={`/servicios/${slug}`}
+  class="group block bg-white-off p-7 hover:bg-cream transition-colors duration-200"
+>
+  <div class="mb-5">
+    {brand && (
+      <span class="label-overline block mb-2">{brand}</span>
+    )}
+    <h3 class="font-heading text-xl font-normal text-text group-hover:text-text-secondary transition-colors leading-snug">
+      {name}
+    </h3>
+  </div>
+  <p class="text-text-light text-sm leading-relaxed mb-6">{tagline}</p>
+  <div class="flex items-end justify-between">
+    <span class="font-heading text-lg text-text">{price}</span>
+    <span class="text-text-light text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+      Ver más
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </span>
+  </div>
+</a>

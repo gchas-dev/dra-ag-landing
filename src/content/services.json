@@ -1,0 +1,142 @@
+[
+  {
+    "slug": "mesoterapia-facial-asuncion",
+    "name": "Mesoterapia Facial",
+    "tagline": "Hidratación y luminosidad desde la primera sesión",
+    "price": "Gs. 600.000",
+    "duration": "1 hora",
+    "brand": "Mesoestetic",
+    "category": "rejuvenecimiento",
+    "featured": true
+  },
+  {
+    "slug": "tratamiento-antiaging-asuncion",
+    "name": "Tratamiento Antiaging",
+    "tagline": "Rejuvenecimiento profesional para una piel firme y vital",
+    "price": "Gs. 1.000.000",
+    "duration": "1 hora",
+    "brand": "Mesoestetic",
+    "category": "rejuvenecimiento",
+    "featured": true
+  },
+  {
+    "slug": "exosomas-mediderma-asuncion",
+    "name": "Exosomas Mediderma",
+    "tagline": "Regeneración celular de última generación",
+    "price": "Gs. 1.200.000",
+    "duration": "1 hora",
+    "brand": "Mediderma",
+    "category": "rejuvenecimiento",
+    "featured": true
+  },
+  {
+    "slug": "cellbooster-glow-asuncion",
+    "name": "Cellbooster Glow",
+    "tagline": "Luminosidad y revitalización con tecnología avanzada",
+    "price": "Gs. 1.200.000",
+    "duration": "1 hora",
+    "brand": "Cellbooster",
+    "category": "rejuvenecimiento",
+    "featured": false
+  },
+  {
+    "slug": "tratamiento-ojeras-asuncion",
+    "name": "Tratamiento de Ojeras con NCTF",
+    "tagline": "Reducí las ojeras con ácido hialurónico revitalizante",
+    "price": "Gs. 1.000.000",
+    "duration": "1 hora",
+    "brand": "Filorga",
+    "category": "rejuvenecimiento",
+    "featured": true
+  },
+  {
+    "slug": "pdrn-salmon-mediderma-asuncion",
+    "name": "PDRN de Salmón Mediderma",
+    "tagline": "Reparación profunda del ADN de tu piel",
+    "price": "Gs. 800.000",
+    "duration": "1 hora",
+    "brand": "Mediderma",
+    "category": "rejuvenecimiento",
+    "featured": false
+  },
+  {
+    "slug": "plasma-rico-plaquetas-asuncion",
+    "name": "Plasma Rico en Plaquetas",
+    "tagline": "Regeneración natural con tu propia biología",
+    "price": "Gs. 800.000",
+    "duration": "1 hora",
+    "brand": null,
+    "category": "rejuvenecimiento",
+    "featured": false
+  },
+  {
+    "slug": "ampollas-caviar-janssen-asuncion",
+    "name": "Ampollas de Caviar Janssen",
+    "tagline": "Nutrición intensiva para pieles maduras",
+    "price": "Gs. 600.000",
+    "duration": "1 hora",
+    "brand": "Janssen Cosmetics",
+    "category": "rejuvenecimiento",
+    "featured": false
+  },
+  {
+    "slug": "mesoterapia-despigmentante-asuncion",
+    "name": "Mesoterapia Despigmentante",
+    "tagline": "Tratamiento de manchas con activos profesionales",
+    "price": "Gs. 550.000",
+    "duration": "1 hora",
+    "brand": "Mesoestetic",
+    "category": "hidratacion",
+    "featured": false
+  },
+  {
+    "slug": "mesoterapia-capilar-asuncion",
+    "name": "Mesoterapia Capilar",
+    "tagline": "Fortalecimiento y revitalización del cabello",
+    "price": "Gs. 800.000",
+    "duration": "1 hora",
+    "brand": "Mesoestetic",
+    "category": "hidratacion",
+    "featured": false
+  },
+  {
+    "slug": "hydralips-asuncion",
+    "name": "Hydralips",
+    "tagline": "Hidratación y volumen natural para tus labios",
+    "price": "Gs. 350.000",
+    "duration": "1 hora",
+    "brand": null,
+    "category": "hidratacion",
+    "featured": false
+  },
+  {
+    "slug": "limpieza-facial-profunda-asuncion",
+    "name": "Limpieza Profunda + Peeling",
+    "tagline": "Base esencial para una piel renovada",
+    "price": "Gs. 380.000",
+    "duration": "1 hora",
+    "brand": null,
+    "category": "limpieza",
+    "featured": true
+  },
+  {
+    "slug": "tratamiento-rosacea-asuncion",
+    "name": "Tratamiento Rosácea",
+    "tagline": "Calma y fortalece la piel sensible",
+    "price": "Gs. 300.000",
+    "duration": "1 hora",
+    "brand": null,
+    "category": "limpieza",
+    "featured": false
+  },
+  {
+    "slug": "tratamiento-acne-asuncion",
+    "name": "Tratamiento Acné",
+    "tagline": "Control profesional del acné activo",
+    "price": "Gs. 300.000",
+    "duration": "1 hora",
+    "brand": null,
+    "category": "limpieza",
+    "featured": false
+  }
+]

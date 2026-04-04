@@ -1,0 +1,111 @@
+---
+const navLinks = [
+  { href: '/servicios', label: 'Servicios' },
+  { href: '/sobre-mi', label: 'Sobre mí' },
+  { href: '/contacto', label: 'Contacto' },
+  { href: '/faq', label: 'FAQ' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="bg-white-off/96 backdrop-blur-sm sticky top-0 z-40 border-b border-cream-dark/60">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 sm:h-20">
+
+    <a href="/" class="flex items-center gap-3 group">
+      <img
+        src="/images/monograma-ag.png"
+        alt="Monograma AG"
+        class="w-8 h-8 sm:w-9 sm:h-9 object-contain"
+        style="filter: brightness(0) saturate(100%) invert(75%) sepia(10%) saturate(400%) hue-rotate(10deg) brightness(90%);"
+      />
+      <span class="font-heading text-lg sm:text-xl font-normal text-text tracking-wide leading-none">
+        Dra. Agustina González
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden md:flex items-center gap-8">
+      {navLinks.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class:list={[
+              'text-sm tracking-wide transition-colors',
+              currentPath === href || currentPath.startsWith(href + '/')
+                ? 'text-text font-medium'
+                : 'text-text-light hover:text-text font-normal'
+            ]}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a
+          href="https://wa.me/595971614156"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary"
+          style="padding: 0.625rem 1.25rem;"
+        >
+          Agendá tu turno
+        </a>
+      </li>
+    </ul>
+
+    <!-- Mobile menu button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden p-2 text-text-light"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile menu — grid transition trick -->
+  <div id="mobile-menu" class="md:hidden bg-white-off border-t border-cream-dark/60">
+    <div class="px-4 pb-6">
+      <ul class="flex flex-col gap-1 pt-3">
+        {navLinks.map(({ href, label }) => (
+          <li>
+            <a
+              href={href}
+              class:list={[
+                'block py-2.5 text-base',
+                currentPath === href ? 'text-text font-medium' : 'text-text-light'
+              ]}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+        <li class="pt-3">
+          <a
+            href="https://wa.me/595971614156"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary block text-center py-3"
+          >
+            Agendá tu turno
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+</script>

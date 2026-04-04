@@ -1,0 +1,504 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import services from '../../content/services.json';
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service }
+  }));
+}
+
+const { service } = Astro.props;
+
+// Service-specific content
+const serviceContent: Record<string, {
+  intro: string;
+  whatIs: string;
+  benefits: string[];
+  process: string;
+  brandText: string;
+  faqs: { question: string; answer: string }[];
+  relatedSlugs: string[];
+}> = {
+  "mesoterapia-facial-asuncion": {
+    intro: "Si sentís que tu piel perdió la luminosidad de antes, que las cremas ya no alcanzan y que cada mañana tu rostro se ve más cansado de lo que realmente estás, no es tu imaginación. Es tu piel pidiéndote un cuidado más profundo. La mesoterapia facial es uno de los tratamientos más efectivos para devolver a tu piel esa hidratación y brillo que el tiempo y el estrés le fueron quitando.",
+    whatIs: "La mesoterapia facial consiste en microinyecciones de un cóctel de ácido hialurónico, vitaminas, minerales y péptidos que se aplican directamente en las capas más profundas de la piel. A diferencia de las cremas que actúan solo en la superficie, la mesoterapia lleva los nutrientes donde realmente se necesitan. En cada sesión utilizamos productos Mesoestetic, de laboratorio español reconocido mundialmente por su eficacia clínica comprobada.",
+    benefits: [
+      "Hidratación profunda que se nota desde la primera sesión",
+      "Luminosidad y aspecto descansado inmediato",
+      "Mejora la textura y el tono de la piel",
+      "Estimula la producción natural de colágeno",
+      "Tratamiento sin cirugía y con recuperación mínima"
+    ],
+    process: "La sesión dura aproximadamente 1 hora. Primero limpiamos tu rostro en profundidad y aplicamos anestesia tópica para tu comodidad. Luego realizamos las microinyecciones en zonas específicas según las necesidades de tu piel. El procedimiento es cómodo y prácticamente indoloro. Podés retomar tus actividades normales de inmediato. Los resultados se notan desde la primera sesión, y se potencian con un protocolo de sesiones personalizado.",
+    brandText: "Trabajamos exclusivamente con Mesoestetic, laboratorio español con más de 35 años de experiencia en dermatología y estética profesional. Sus fórmulas combinan ácido hialurónico de alta densidad con vitaminas y péptidos bioactivos de grado médico.",
+    faqs: [
+      { question: "¿Cuántas sesiones de mesoterapia facial necesito?", answer: "Depende del estado de tu piel y tus objetivos. Generalmente se recomienda un protocolo inicial de 4 a 6 sesiones, con intervalos de 2 a 3 semanas entre cada una. Después, sesiones de mantenimiento cada 1-2 meses." },
+      { question: "¿La mesoterapia facial duele?", answer: "Aplicamos anestesia tópica antes del procedimiento, por lo que las molestias son mínimas. La mayoría de las pacientes lo describen como pequeños pinchazos muy tolerables." },
+      { question: "¿A partir de qué edad puedo hacer mesoterapia facial?", answer: "Se puede realizar desde los 25 años como tratamiento preventivo de hidratación. A partir de los 30-35 años es especialmente beneficiosa para combatir los primeros signos de envejecimiento." },
+      { question: "¿Cuánto cuesta la mesoterapia facial en Asunción?", answer: "La sesión de mesoterapia facial con productos Mesoestetic tiene un costo de 600.000 Gs. Consultá por protocolos de varias sesiones escribiéndome por WhatsApp." }
+    ],
+    relatedSlugs: ["tratamiento-antiaging-asuncion", "cellbooster-glow-asuncion", "limpieza-facial-profunda-asuncion"]
+  },
+  "tratamiento-antiaging-asuncion": {
+    intro: "Los signos del envejecimiento no aparecen de un día para el otro: son un proceso gradual que empieza con la pérdida de firmeza, las líneas finas y la falta de luminosidad. Si ya notás que tu piel no responde como antes a tus cremas habituales, es momento de un tratamiento profesional que trabaje desde adentro. El tratamiento antiaging es la opción ideal para quienes buscan rejuvenecer sin cirugía.",
+    whatIs: "El tratamiento antiaging profesional combina técnicas de mesoterapia con activos concentrados que estimulan la producción de colágeno y elastina. Trabajamos con protocolos personalizados que incluyen ácido hialurónico, vitaminas antioxidantes y factores de crecimiento que actúan en la regeneración celular. Cada sesión se adapta al estado y las necesidades específicas de tu piel.",
+    benefits: [
+      "Reduce visiblemente las líneas de expresión",
+      "Mejora la firmeza y elasticidad de la piel",
+      "Recupera la luminosidad perdida",
+      "Previene el envejecimiento prematuro",
+      "Resultados progresivos y naturales"
+    ],
+    process: "La sesión tiene una duración de 1 hora. Comenzamos con una evaluación del estado de tu piel para personalizar el protocolo. Aplicamos anestesia tópica y procedemos con las microinyecciones de activos antiaging en las zonas que más lo necesitan. Es un procedimiento cómodo con recuperación inmediata, pudiendo retomar tus actividades el mismo día.",
+    brandText: "Utilizamos productos de Mesoestetic, laboratorio europeo líder en tratamientos antiaging profesionales. Sus fórmulas están respaldadas por investigación clínica y contienen activos de última generación para combatir los signos del envejecimiento.",
+    faqs: [
+      { question: "¿A partir de qué edad debería empezar un tratamiento antiaging?", answer: "A partir de los 30 años se recomienda iniciar tratamientos preventivos. Después de los 35, los tratamientos antiaging profesionales marcan una diferencia visible en la calidad de la piel." },
+      { question: "¿Cada cuánto debo hacer el tratamiento antiaging?", answer: "Se recomienda un protocolo inicial de 4-6 sesiones cada 2-3 semanas, seguido de sesiones de mantenimiento mensuales para sostener los resultados." },
+      { question: "¿El tratamiento antiaging reemplaza al bótox?", answer: "Son tratamientos complementarios con objetivos diferentes. El antiaging mejora la calidad general de la piel, su firmeza e hidratación. Si necesitás un enfoque más completo, puedo orientarte en tu consulta." }
+    ],
+    relatedSlugs: ["mesoterapia-facial-asuncion", "exosomas-mediderma-asuncion", "pdrn-salmon-mediderma-asuncion"]
+  },
+  "exosomas-mediderma-asuncion": {
+    intro: "Los exosomas representan la frontera más avanzada en regeneración celular. Si buscás un tratamiento que vaya más allá de la hidratación superficial y trabaje en la reparación real de tu piel a nivel celular, los exosomas son la respuesta. Es tecnología de última generación que hasta hace poco solo estaba disponible en clínicas de Europa y Estados Unidos.",
+    whatIs: "Los exosomas son nanovesículas que actúan como mensajeros celulares, llevando información de regeneración directamente a las células de tu piel. Cuando se aplican mediante mesoterapia, estimulan la producción de colágeno, reparan el daño celular y mejoran la comunicación entre células. Utilizamos los exosomas de Mediderma, laboratorio español que ha desarrollado una de las formulaciones más avanzadas del mercado.",
+    benefits: [
+      "Regeneración celular profunda y comprobada",
+      "Mejora la textura, firmeza y luminosidad de la piel",
+      "Repara el daño causado por el sol y el envejecimiento",
+      "Resultados visibles y progresivos desde la primera sesión",
+      "Tecnología de vanguardia con respaldo científico"
+    ],
+    process: "La sesión dura aproximadamente 1 hora. Después de la limpieza facial y la aplicación de anestesia tópica, se realizan las microinyecciones con la formulación de exosomas en las áreas a tratar. El procedimiento es cómodo y la recuperación es inmediata. Tu piel comenzará a trabajar en su propia regeneración en las horas y días siguientes.",
+    brandText: "Trabajamos con exosomas de Mediderma, laboratorio español con décadas de experiencia en dermatología avanzada. Su formulación de exosomas es una de las más investigadas del mercado, con estudios clínicos que respaldan su eficacia en regeneración cutánea.",
+    faqs: [
+      { question: "¿Qué diferencia hay entre exosomas y mesoterapia tradicional?", answer: "La mesoterapia hidrata y nutre la piel con vitaminas y ácido hialurónico. Los exosomas van un paso más allá: actúan a nivel celular, reparando y regenerando las células. Son especialmente indicados para pieles con daño acumulado o que buscan un rejuvenecimiento más profundo." },
+      { question: "¿Cuántas sesiones de exosomas necesito?", answer: "Generalmente se recomienda un protocolo de 3 a 4 sesiones, con intervalos de 3 a 4 semanas. Los resultados son progresivos y se potencian con cada sesión." },
+      { question: "¿Los exosomas son seguros?", answer: "Sí, los exosomas de Mediderma son un producto aprobado y respaldado por investigación clínica. Al ser nanovesículas biocompatibles, son muy bien tolerados por la piel." }
+    ],
+    relatedSlugs: ["pdrn-salmon-mediderma-asuncion", "tratamiento-antiaging-asuncion", "cellbooster-glow-asuncion"]
+  },
+  "cellbooster-glow-asuncion": {
+    intro: "Si tu piel se ve opaca, deshidratada y sin vida a pesar de usar buenos productos en casa, es porque necesita un impulso que solo un tratamiento profesional puede dar. Cellbooster Glow es un tratamiento de revitalización que trabaja en las capas profundas de tu piel para devolverle esa luminosidad natural que tanto buscás.",
+    whatIs: "Cellbooster Glow es un tratamiento inyectable de última generación que combina ácido hialurónico con un complejo de vitaminas, aminoácidos y antioxidantes especialmente formulados para revitalizar la piel. A diferencia de otros tratamientos, Cellbooster utiliza una tecnología patentada que permite una liberación gradual de los activos, prolongando los resultados.",
+    benefits: [
+      "Luminosidad inmediata y duradera",
+      "Hidratación profunda con efecto prolongado",
+      "Mejora la elasticidad y textura de la piel",
+      "Efecto glow natural sin aspecto artificial",
+      "Tecnología de liberación gradual para resultados sostenidos"
+    ],
+    process: "La sesión tiene una duración de 1 hora. Comenzamos con una limpieza profunda del rostro, seguida de anestesia tópica. Se aplica el producto mediante microinyecciones estratégicas en las zonas que más necesitan revitalización. El procedimiento es cómodo y podés retomar tu rutina normal inmediatamente después.",
+    brandText: "Cellbooster es una marca suiza reconocida por su innovación en medicina estética. Su producto Glow está formulado con una combinación patentada de ácido hialurónico y activos biorevitalizantes de grado médico.",
+    faqs: [
+      { question: "¿Cuánto dura el efecto de Cellbooster Glow?", answer: "Los resultados son visibles desde la primera sesión y pueden durar entre 3 y 6 meses dependiendo de tu tipo de piel y estilo de vida. Las sesiones de mantenimiento ayudan a prolongar los efectos." },
+      { question: "¿Cellbooster Glow es lo mismo que la mesoterapia?", answer: "Comparten la técnica de aplicación (microinyecciones), pero Cellbooster Glow utiliza una formulación más concentrada con tecnología de liberación prolongada, lo que ofrece resultados más intensos y duraderos." },
+      { question: "¿Puedo combinar Cellbooster con otros tratamientos?", answer: "Sí, Cellbooster Glow se puede complementar con otros tratamientos faciales. En tu consulta evaluamos cuál es la mejor combinación según las necesidades de tu piel." }
+    ],
+    relatedSlugs: ["mesoterapia-facial-asuncion", "exosomas-mediderma-asuncion", "tratamiento-antiaging-asuncion"]
+  },
+  "tratamiento-ojeras-asuncion": {
+    intro: "Las ojeras oscuras y marcadas pueden hacerte ver cansada aunque hayas dormido bien. Es una de las preocupaciones estéticas más frecuentes, y muchas veces ni los correctores logran disimularlas. El tratamiento de ojeras con NCTF actúa directamente sobre la causa, revitalizando la zona del contorno de ojos para una mirada más descansada y luminosa.",
+    whatIs: "El tratamiento de ojeras utiliza NCTF (New Cellular Treatment Factor) de Filorga, un revitalizante facial que combina ácido hialurónico con un complejo de más de 50 ingredientes activos incluyendo vitaminas, aminoácidos, minerales y coenzimas. Se aplica mediante microinyecciones en la zona periocular, mejorando la circulación, hidratación y calidad de la piel del contorno de ojos.",
+    benefits: [
+      "Reduce visiblemente las ojeras oscuras",
+      "Mejora la hidratación del contorno de ojos",
+      "Atenúa las líneas finas de la zona periocular",
+      "Mirada más descansada y luminosa",
+      "Resultados naturales y progresivos"
+    ],
+    process: "La sesión dura aproximadamente 1 hora. Realizamos una limpieza suave de la zona y aplicamos anestesia tópica para tu comodidad. Las microinyecciones se realizan con precisión en la zona del contorno de ojos. Es un procedimiento delicado pero muy bien tolerado. Podés notar un leve enrojecimiento las primeras horas, que se resuelve rápidamente.",
+    brandText: "Utilizamos NCTF de Filorga, laboratorio francés pionero en medicina estética. NCTF es reconocido mundialmente como uno de los revitalizantes más completos del mercado, con más de 40 años de experiencia clínica.",
+    faqs: [
+      { question: "¿El tratamiento de ojeras funciona para todos los tipos de ojeras?", answer: "El tratamiento con NCTF es especialmente efectivo para ojeras oscuras por mala circulación y deshidratación. En tu consulta evaluamos el tipo de ojera para confirmar si es el tratamiento más adecuado para vos." },
+      { question: "¿Cuántas sesiones necesito para las ojeras?", answer: "Generalmente se recomienda un protocolo de 3 a 4 sesiones, cada 2-3 semanas. Los resultados son progresivos y se mantienen con sesiones de mantenimiento periódicas." },
+      { question: "¿Es doloroso el tratamiento de ojeras?", answer: "La zona del contorno de ojos es sensible, pero con la anestesia tópica que aplicamos antes del procedimiento, las molestias son mínimas. La mayoría de las pacientes lo toleran muy bien." }
+    ],
+    relatedSlugs: ["mesoterapia-facial-asuncion", "tratamiento-antiaging-asuncion", "cellbooster-glow-asuncion"]
+  },
+  "pdrn-salmon-mediderma-asuncion": {
+    intro: "El PDRN de salmón es uno de los avances más sorprendentes en regeneración cutánea. Si tu piel muestra signos de daño acumulado —ya sea por exposición solar, estrés o el paso del tiempo— este tratamiento trabaja en la reparación del ADN celular para una piel verdaderamente renovada desde su estructura más profunda.",
+    whatIs: "El PDRN (Polinucleótidos) de salmón es un activo bioregenerativo extraído del ADN de salmón. Cuando se aplica en la piel mediante mesoterapia, estimula la reparación del ADN celular dañado, promueve la regeneración de tejido y mejora significativamente la hidratación y elasticidad. Trabajamos con la formulación de Mediderma, que garantiza la máxima pureza y eficacia del activo.",
+    benefits: [
+      "Reparación del ADN celular dañado",
+      "Regeneración profunda del tejido cutáneo",
+      "Mejora significativa de la hidratación y elasticidad",
+      "Reduce el daño solar acumulado",
+      "Efecto rejuvenecedor natural y progresivo"
+    ],
+    process: "La sesión dura aproximadamente 1 hora. Después de la limpieza facial, aplicamos anestesia tópica y realizamos las microinyecciones con PDRN en las zonas que necesitan mayor regeneración. Es un procedimiento cómodo y con recuperación inmediata. Tu piel comenzará su proceso de reparación celular en los días siguientes al tratamiento.",
+    brandText: "Utilizamos PDRN de Mediderma, laboratorio español especializado en dermatología avanzada. Su formulación de polinucleótidos es de alta pureza y cuenta con respaldo clínico en regeneración cutánea.",
+    faqs: [
+      { question: "¿Qué es el PDRN de salmón y por qué funciona?", answer: "El PDRN son fragmentos de ADN de salmón que son biocompatibles con el ADN humano. Cuando se aplican en la piel, activan los mecanismos naturales de reparación celular, estimulando la producción de colágeno y la regeneración del tejido." },
+      { question: "¿El PDRN de salmón es seguro?", answer: "Sí, es un producto purificado y aprobado para uso en medicina estética. Los polinucleótidos de salmón son biocompatibles y muy bien tolerados por el organismo." },
+      { question: "¿Se puede combinar el PDRN con otros tratamientos?", answer: "Sí, el PDRN se complementa muy bien con tratamientos como exosomas o mesoterapia tradicional. En tu consulta diseñamos el protocolo más adecuado para los objetivos de tu piel." }
+    ],
+    relatedSlugs: ["exosomas-mediderma-asuncion", "tratamiento-antiaging-asuncion", "plasma-rico-plaquetas-asuncion"]
+  },
+  "plasma-rico-plaquetas-asuncion": {
+    intro: "El plasma rico en plaquetas aprovecha lo mejor de tu propia biología para regenerar tu piel. Si buscás un tratamiento 100% natural que estimule la reparación y el rejuvenecimiento de tu rostro sin productos externos, el PRP es la opción ideal. Tu propio cuerpo tiene la capacidad de renovar tu piel — solo necesita un pequeño impulso profesional.",
+    whatIs: "El plasma rico en plaquetas (PRP) es un tratamiento que utiliza factores de crecimiento extraídos de tu propia sangre. Se realiza una pequeña extracción sanguínea, se procesa en centrífuga para concentrar las plaquetas, y se aplica mediante microinyecciones en el rostro. Los factores de crecimiento estimulan la producción de colágeno y la regeneración celular de forma completamente natural.",
+    benefits: [
+      "Tratamiento 100% natural con tu propia biología",
+      "Estimula la producción de colágeno y elastina",
+      "Mejora la textura, firmeza y luminosidad",
+      "Sin riesgo de alergias ni reacciones adversas",
+      "Regeneración progresiva y duradera"
+    ],
+    process: "La sesión dura aproximadamente 1 hora. Comenzamos con una pequeña extracción de sangre (similar a un análisis de rutina). Tu sangre se procesa en centrífuga para obtener el plasma concentrado en plaquetas. Luego se aplica en tu rostro mediante microinyecciones precisas. El procedimiento es seguro, cómodo y con recuperación inmediata.",
+    brandText: "El PRP es un tratamiento biológico que no requiere productos externos. Utilizamos equipamiento certificado para el procesamiento de la sangre, garantizando la máxima concentración de factores de crecimiento y la seguridad del procedimiento.",
+    faqs: [
+      { question: "¿El plasma rico en plaquetas es doloroso?", answer: "La extracción de sangre es similar a un análisis común. Para la aplicación facial, usamos anestesia tópica que hace el procedimiento muy cómodo. Las molestias son mínimas." },
+      { question: "¿Cuántas sesiones de PRP necesito?", answer: "Se recomienda un protocolo de 3 sesiones, con intervalos de 4 semanas entre cada una. Luego, sesiones de mantenimiento cada 4-6 meses para sostener los resultados." },
+      { question: "¿Puedo combinar el PRP con otros tratamientos?", answer: "Sí, el PRP se complementa excelentemente con mesoterapia o exosomas. En tu consulta evaluamos la mejor combinación para potenciar los resultados." }
+    ],
+    relatedSlugs: ["pdrn-salmon-mediderma-asuncion", "exosomas-mediderma-asuncion", "tratamiento-antiaging-asuncion"]
+  },
+  "ampollas-caviar-janssen-asuncion": {
+    intro: "La piel madura necesita un nivel de nutrición que va más allá de la hidratación convencional. Si sentís que tu piel está perdiendo vitalidad, firmeza y ese aspecto saludable que solía tener, las ampollas de caviar de Janssen son un tratamiento rehabilitador premium diseñado para pieles que necesitan una nutrición intensiva y profunda.",
+    whatIs: "Las ampollas de caviar de Janssen Cosmetics contienen extracto concentrado de caviar, rico en proteínas, aminoácidos, vitaminas y oligoelementos que nutren la piel en profundidad. Este tratamiento rehabilitador combina la aplicación de las ampollas con técnicas de mesoterapia para llevar los activos a las capas más profundas de la piel, donde realmente hacen efecto.",
+    benefits: [
+      "Nutrición intensiva para pieles desvitalizadas",
+      "Recupera la firmeza y elasticidad perdidas",
+      "Aporta luminosidad y aspecto saludable",
+      "Rico en proteínas y aminoácidos esenciales",
+      "Tratamiento rehabilitador ideal para pieles maduras"
+    ],
+    process: "La sesión dura aproximadamente 1 hora. Comenzamos con una limpieza profunda del rostro, seguida de la aplicación de las ampollas de caviar mediante técnicas específicas que favorecen la penetración de los activos. El tratamiento es cómodo, relajante y con resultados visibles desde la primera sesión.",
+    brandText: "Janssen Cosmetics es un laboratorio alemán con más de 30 años de experiencia en cosmética profesional de alta gama. Sus ampollas de caviar son un producto emblemático, reconocido por profesionales de la estética en todo el mundo por su eficacia en tratamientos rehabilitadores.",
+    faqs: [
+      { question: "¿Para qué tipo de piel son las ampollas de caviar?", answer: "Son especialmente indicadas para pieles maduras, desvitalizadas o que necesitan una nutrición intensiva. También son excelentes para pieles que han sufrido estrés ambiental o deshidratación crónica." },
+      { question: "¿Cuántas sesiones necesito con ampollas de caviar?", answer: "Se recomienda un protocolo de 4 a 6 sesiones, una por semana o cada dos semanas, para obtener resultados óptimos. Luego, sesiones de mantenimiento mensuales." },
+      { question: "¿Las ampollas de caviar son aptas para pieles sensibles?", answer: "Sí, la formulación de Janssen Cosmetics es de alta calidad y bien tolerada. En tu consulta evaluamos tu piel para asegurarnos de que es el tratamiento más adecuado." }
+    ],
+    relatedSlugs: ["tratamiento-antiaging-asuncion", "mesoterapia-facial-asuncion", "cellbooster-glow-asuncion"]
+  },
+  "mesoterapia-despigmentante-asuncion": {
+    intro: "Las manchas en el rostro pueden afectar mucho tu confianza. Ya sea por exposición solar, cambios hormonales o el paso del tiempo, las hiperpigmentaciones son una de las consultas más frecuentes. La mesoterapia despigmentante es un tratamiento profesional que actúa directamente sobre la producción de melanina para un tono de piel más uniforme y luminoso.",
+    whatIs: "La mesoterapia despigmentante combina microinyecciones con activos despigmentantes de Mesoestetic, laboratorio líder en tratamientos contra las manchas. Los activos actúan inhibiendo la producción excesiva de melanina y promoviendo la renovación celular para una piel con tono más parejo. A diferencia de las cremas despigmentantes, este tratamiento lleva los activos directamente donde se produce la melanina.",
+    benefits: [
+      "Reduce visiblemente las manchas y el melasma",
+      "Unifica el tono de la piel de forma progresiva",
+      "Actúa directamente sobre la producción de melanina",
+      "Mejora la luminosidad general del rostro",
+      "Activos profesionales de mayor penetración que las cremas"
+    ],
+    process: "La sesión dura aproximadamente 1 hora. Comenzamos con una limpieza profunda y evaluación de las manchas. Aplicamos anestesia tópica y realizamos las microinyecciones con el cóctel despigmentante en las zonas afectadas. Es fundamental complementar el tratamiento con protección solar diaria para optimizar los resultados.",
+    brandText: "Utilizamos productos despigmentantes de Mesoestetic, laboratorio español que es referencia mundial en el tratamiento de hiperpigmentaciones. Su línea despigmentante cuenta con investigación clínica que respalda su eficacia contra manchas solares, melasma y otras hiperpigmentaciones.",
+    faqs: [
+      { question: "¿La mesoterapia despigmentante elimina todas las manchas?", answer: "Los resultados dependen del tipo y la profundidad de la mancha. Las manchas superficiales responden mejor al tratamiento. En tu consulta evaluamos tus manchas y te damos un pronóstico realista de los resultados esperados." },
+      { question: "¿Puedo hacer mesoterapia despigmentante en verano?", answer: "Es preferible realizar el tratamiento en los meses de menor exposición solar. Si lo hacés en verano, es imprescindible el uso riguroso de protector solar de alto factor todos los días." },
+      { question: "¿Cuántas sesiones necesito para las manchas?", answer: "Generalmente se requieren entre 4 y 8 sesiones, dependiendo del tipo y la extensión de las manchas. Las sesiones se realizan cada 2-3 semanas." }
+    ],
+    relatedSlugs: ["mesoterapia-facial-asuncion", "limpieza-facial-profunda-asuncion", "tratamiento-antiaging-asuncion"]
+  },
+  "mesoterapia-capilar-asuncion": {
+    intro: "La caída del cabello y el debilitamiento capilar pueden generar mucha preocupación. Si notás que tu pelo está más fino, que se cae más de lo habitual o que pierde densidad, la mesoterapia capilar es un tratamiento profesional que estimula el crecimiento y fortalece el cabello desde la raíz.",
+    whatIs: "La mesoterapia capilar consiste en microinyecciones de un cóctel de vitaminas, minerales, aminoácidos y factores de crecimiento directamente en el cuero cabelludo. Los activos llegan a los folículos capilares, estimulando la circulación sanguínea, nutriendo la raíz del pelo y promoviendo un crecimiento más fuerte y saludable. Utilizamos productos Mesoestetic específicos para tratamiento capilar.",
+    benefits: [
+      "Reduce la caída del cabello de forma progresiva",
+      "Fortalece el pelo desde la raíz",
+      "Estimula el crecimiento de cabello nuevo",
+      "Mejora la densidad y el grosor del pelo",
+      "Nutre los folículos capilares en profundidad"
+    ],
+    process: "La sesión dura aproximadamente 1 hora. Comenzamos con una evaluación del cuero cabelludo y el estado del cabello. Luego realizamos las microinyecciones con el cóctel capilar en las zonas que más lo necesitan. El procedimiento es bien tolerado y podés continuar con tu rutina normal inmediatamente después.",
+    brandText: "Trabajamos con productos capilares de Mesoestetic, laboratorio español que ha desarrollado fórmulas específicas para el tratamiento de la alopecia y el debilitamiento capilar, con activos de grado médico que estimulan el folículo piloso.",
+    faqs: [
+      { question: "¿La mesoterapia capilar funciona para todos los tipos de caída?", answer: "Es especialmente efectiva para la alopecia difusa y el debilitamiento capilar. En tu consulta evaluamos el tipo de caída para determinar si es el tratamiento más indicado." },
+      { question: "¿Cuándo empiezo a ver resultados?", answer: "Los primeros resultados (menor caída) suelen notarse a partir de la tercera o cuarta sesión. El crecimiento de pelo nuevo se observa generalmente después de 2-3 meses de tratamiento." },
+      { question: "¿Cuántas sesiones de mesoterapia capilar necesito?", answer: "Se recomienda un protocolo inicial de 6 a 8 sesiones, una por semana o cada dos semanas. Luego, sesiones de mantenimiento mensuales para sostener los resultados." }
+    ],
+    relatedSlugs: ["plasma-rico-plaquetas-asuncion", "mesoterapia-facial-asuncion", "pdrn-salmon-mediderma-asuncion"]
+  },
+  "hydralips-asuncion": {
+    intro: "Unos labios hidratados y con volumen natural son uno de los detalles que más aportan armonía al rostro. Si sentís tus labios secos, sin definición o con pérdida de volumen, Hydralips es un tratamiento sutil que devuelve la hidratación y un volumen natural sin aspecto artificial.",
+    whatIs: "Hydralips es un tratamiento de hidratación y volumen labial mediante la aplicación de ácido hialurónico de baja densidad específico para labios. No se trata de rellenar, sino de hidratar en profundidad y devolver la definición natural del labio. El resultado son labios más suaves, hidratados y con un volumen sutil y armónico.",
+    benefits: [
+      "Hidratación profunda y duradera de los labios",
+      "Volumen sutil y natural, sin aspecto artificial",
+      "Mejora la definición del contorno labial",
+      "Labios más suaves y con mejor textura",
+      "Procedimiento rápido con resultados inmediatos"
+    ],
+    process: "La sesión dura aproximadamente 1 hora. Aplicamos anestesia tópica en la zona labial para tu comodidad. Luego, mediante técnica precisa, se aplica el ácido hialurónico en puntos estratégicos para lograr hidratación y un volumen natural. El resultado es inmediato y los labios se ven naturalmente más lindos desde el primer momento.",
+    brandText: "Utilizamos ácido hialurónico de alta calidad específico para la zona labial, garantizando un resultado natural, seguro y con buena duración.",
+    faqs: [
+      { question: "¿Hydralips es lo mismo que relleno de labios?", answer: "No. Hydralips se enfoca en la hidratación y un volumen muy sutil. No es un relleno volumétrico. El resultado son labios más hidratados y definidos, pero manteniendo su forma natural." },
+      { question: "¿Cuánto dura el efecto de Hydralips?", answer: "El efecto de hidratación y volumen sutil puede durar entre 3 y 6 meses, dependiendo de cada persona. Se puede repetir el tratamiento para mantener los resultados." },
+      { question: "¿Hydralips duele?", answer: "Aplicamos anestesia tópica antes del procedimiento, por lo que las molestias son mínimas. La mayoría de las pacientes lo tolera muy bien." }
+    ],
+    relatedSlugs: ["mesoterapia-facial-asuncion", "cellbooster-glow-asuncion", "limpieza-facial-profunda-asuncion"]
+  },
+  "limpieza-facial-profunda-asuncion": {
+    intro: "Una piel limpia es la base de cualquier tratamiento estético. Si notás poros dilatados, puntos negros, textura irregular o tu piel se siente pesada y opaca, la limpieza profunda con peeling es el primer paso para recuperar una piel fresca, oxigenada y lista para absorber mejor cualquier activo.",
+    whatIs: "La limpieza facial profunda combina técnicas manuales de extracción con un peeling químico suave que renueva las capas superficiales de la piel. El procedimiento elimina impurezas, células muertas, exceso de sebo y puntos negros, dejando la piel completamente limpia, suave y preparada para tratamientos posteriores. Es un tratamiento esencial que toda piel necesita periódicamente.",
+    benefits: [
+      "Elimina impurezas, puntos negros y exceso de sebo",
+      "Renueva las capas superficiales con peeling",
+      "Mejora la textura y la luminosidad de la piel",
+      "Prepara la piel para absorber mejor otros tratamientos",
+      "Poros más refinados y piel más uniforme"
+    ],
+    process: "La sesión dura aproximadamente 1 hora. Comenzamos con una limpieza superficial, seguida de vaporización para abrir los poros. Luego realizamos las extracciones necesarias de forma profesional y cuidadosa. Aplicamos el peeling adecuado para tu tipo de piel y finalizamos con una mascarilla calmante y protección solar. Tu piel queda inmediatamente más limpia y luminosa.",
+    brandText: "Utilizamos productos profesionales seleccionados según cada tipo de piel, combinando activos de limpieza profunda con peelings suaves que renuevan sin agredir.",
+    faqs: [
+      { question: "¿Cada cuánto debo hacer una limpieza facial profunda?", answer: "Se recomienda una limpieza profunda cada 4 a 6 semanas para mantener la piel en óptimas condiciones. Si tenés piel grasa o tendencia al acné, puede ser cada 3-4 semanas." },
+      { question: "¿La limpieza facial profunda duele?", answer: "Las extracciones pueden generar una leve molestia, pero se realizan con técnica profesional para minimizar cualquier incomodidad. El peeling puede producir una ligera sensación de cosquilleo." },
+      { question: "¿Puedo maquillarme después de la limpieza facial?", answer: "Se recomienda evitar el maquillaje durante las primeras 24 horas para que la piel respire y absorba mejor los activos. Sí es importante aplicar protector solar." }
+    ],
+    relatedSlugs: ["mesoterapia-facial-asuncion", "tratamiento-acne-asuncion", "tratamiento-rosacea-asuncion"]
+  },
+  "tratamiento-rosacea-asuncion": {
+    intro: "La rosácea puede ser frustrante: el enrojecimiento, la sensibilidad y las pequeñas venitas visibles afectan tu confianza y limitan los productos que podés usar. Si tu piel reacciona a todo y sentís que nada funciona, un tratamiento profesional puede marcar una diferencia real. En mi consultorio trabajo con protocolos específicos para pieles con rosácea, calmando la inflamación y fortaleciendo la barrera cutánea.",
+    whatIs: "El tratamiento de rosácea combina técnicas suaves y activos específicos para calmar la inflamación, reducir el enrojecimiento y fortalecer la barrera protectora de la piel. Trabajamos con un enfoque cuidadoso que respeta la sensibilidad de la piel rosácea, utilizando productos formulados especialmente para pieles reactivas. Cada protocolo se adapta al grado de rosácea y las necesidades de cada paciente.",
+    benefits: [
+      "Reduce el enrojecimiento y la inflamación",
+      "Calma la sensibilidad y la reactividad de la piel",
+      "Fortalece la barrera cutánea",
+      "Mejora la tolerancia de la piel a productos y factores externos",
+      "Protocolo suave adaptado a pieles sensibles"
+    ],
+    process: "La sesión dura aproximadamente 1 hora. Comenzamos con una evaluación del tipo y grado de rosácea. Utilizamos técnicas suaves y productos específicos para pieles reactivas, evitando cualquier agresión. El tratamiento incluye limpieza delicada, aplicación de activos calmantes y antiinflamatorios, y protección final. Es un procedimiento cómodo y relajante.",
+    brandText: "Utilizamos productos profesionales específicos para pieles con rosácea, formulados con activos calmantes y antiinflamatorios de grado dermatológico.",
+    faqs: [
+      { question: "¿El tratamiento cura la rosácea?", answer: "La rosácea es una condición crónica que se puede controlar muy bien con los tratamientos adecuados. El objetivo es reducir los brotes, calmar la piel y fortalecer su barrera protectora para una mejor calidad de vida." },
+      { question: "¿Es seguro hacer tratamientos faciales si tengo rosácea?", answer: "Sí, siempre que sean realizados por un profesional con experiencia en pieles reactivas. Los protocolos que utilizo están diseñados específicamente para respetar la sensibilidad de la piel con rosácea." },
+      { question: "¿Cuántas sesiones necesito para la rosácea?", answer: "Depende del grado de rosácea. Generalmente se recomienda un protocolo de 4 a 6 sesiones iniciales, seguido de mantenimiento periódico para controlar los síntomas a largo plazo." }
+    ],
+    relatedSlugs: ["limpieza-facial-profunda-asuncion", "tratamiento-acne-asuncion", "mesoterapia-facial-asuncion"]
+  },
+  "tratamiento-acne-asuncion": {
+    intro: "El acné activo no es solo un problema estético — afecta tu confianza y tu día a día. Si probaste muchos productos sin resultados, o si tu acné vuelve a aparecer una y otra vez, un tratamiento profesional puede hacer la diferencia. En mi consultorio trabajo con protocolos específicos que controlan el acné activo y previenen nuevas lesiones.",
+    whatIs: "El tratamiento de acné profesional combina técnicas de limpieza profunda, extracciones controladas y aplicación de activos específicos que regulan la producción de sebo, combaten la bacteria causante del acné y promueven la renovación celular. Cada sesión se adapta al tipo de acné y al estado de tu piel, buscando resultados efectivos sin agredir la piel.",
+    benefits: [
+      "Control efectivo del acné activo",
+      "Reduce la inflamación y las lesiones",
+      "Regula la producción de sebo",
+      "Previene la formación de nuevas lesiones",
+      "Mejora la textura y apariencia de la piel"
+    ],
+    process: "La sesión dura aproximadamente 1 hora. Comenzamos con una evaluación del tipo de acné y las lesiones presentes. Realizamos una limpieza profunda con extracciones profesionales de comedones e impurezas. Aplicamos activos específicos para el control del acné y finalizamos con una mascarilla calmante. Te damos indicaciones de cuidado domiciliario para potenciar los resultados.",
+    brandText: "Utilizamos productos profesionales seleccionados para el tratamiento del acné, con activos reguladores del sebo, antibacterianos y renovadores celulares de grado dermatológico.",
+    faqs: [
+      { question: "¿El tratamiento de acné deja marcas?", answer: "El tratamiento profesional busca precisamente prevenir las marcas al tratar las lesiones de forma controlada. Las extracciones realizadas por un profesional minimizan el riesgo de cicatrices, a diferencia de manipular las lesiones en casa." },
+      { question: "¿A partir de qué edad se puede hacer el tratamiento?", answer: "Se puede realizar desde la adolescencia, cuando el acné suele ser más activo. No hay límite de edad — el acné adulto también responde muy bien al tratamiento profesional." },
+      { question: "¿Cuántas sesiones necesito para controlar el acné?", answer: "Depende de la severidad. Generalmente se necesitan entre 4 y 8 sesiones iniciales, con frecuencia semanal o quincenal. Luego, sesiones de mantenimiento según la evolución." }
+    ],
+    relatedSlugs: ["limpieza-facial-profunda-asuncion", "tratamiento-rosacea-asuncion", "mesoterapia-facial-asuncion"]
+  }
+};
+
+const content = serviceContent[service.slug];
+
+// Related services
+const relatedServices = content
+  ? services.filter(s => content.relatedSlugs.includes(s.slug))
+  : [];
+
+// SEO
+const seo = {
+  title: `${service.name} en Asunción | Dra. Agustina González`,
+  description: `${service.name} profesional en Asunción.${service.brand ? ` Tratamiento con ${service.brand}.` : ''} ${service.tagline}. Agendá tu turno.`,
+  canonical: `https://agustinagonzalez.com.py/servicios/${service.slug}`
+};
+
+// Schema: Service
+const schemaService = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": service.name,
+  "provider": {
+    "@type": "MedicalBusiness",
+    "name": "Dra. Agustina González - Dermatocosmiatra",
+    "url": "https://agustinagonzalez.com.py"
+  },
+  "areaServed": { "@type": "City", "name": "Asunción" },
+  "description": seo.description,
+  "offers": {
+    "@type": "Offer",
+    "price": service.price.replace(/\./g, '').replace(' Gs', ''),
+    "priceCurrency": "PYG"
+  }
+};
+
+// Schema: FAQPage
+const schemaFAQ = content ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": content.faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+} : null;
+
+// Schema: Breadcrumb
+const schemaBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://agustinagonzalez.com.py/" },
+    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://agustinagonzalez.com.py/servicios" },
+    { "@type": "ListItem", "position": 3, "name": service.name, "item": seo.canonical }
+  ]
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical}>
+  <Header slot="header" />
+
+  <!-- Breadcrumbs -->
+  <nav class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-6" aria-label="Breadcrumb">
+    <ol class="flex text-sm text-text-light gap-2">
+      <li><a href="/" class="hover:text-taupe transition-colors">Inicio</a></li>
+      <li>/</li>
+      <li><a href="/servicios" class="hover:text-taupe transition-colors">Servicios</a></li>
+      <li>/</li>
+      <li class="text-text font-medium">{service.name}</li>
+    </ol>
+  </nav>
+
+  {content ? (
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- H1 + tagline -->
+      <header class="mb-10">
+        <h1 class="font-heading text-4xl sm:text-5xl font-semibold text-text mb-4">
+          {service.name} en Asunción
+        </h1>
+        <p class="text-taupe font-medium text-lg">{service.tagline}</p>
+      </header>
+
+      <!-- Intro -->
+      <section class="mb-12">
+        <p class="text-text-light text-lg leading-relaxed">{content.intro}</p>
+      </section>
+
+      <!-- ¿Qué es? -->
+      <section class="mb-12">
+        <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-text mb-4">¿Qué es {service.name.toLowerCase().startsWith('el ') || service.name.toLowerCase().startsWith('la ') ? '' : service.name.includes('Tratamiento') || service.name.includes('Mesoterapia') || service.name.includes('Limpieza') ? 'la ' : 'el '}{service.name.toLowerCase()}?</h2>
+        <p class="text-text-light leading-relaxed">{content.whatIs}</p>
+      </section>
+
+      <!-- Beneficios -->
+      <section class="mb-12">
+        <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-text mb-6">Beneficios</h2>
+        <ul class="space-y-3">
+          {content.benefits.map((benefit) => (
+            <li class="flex items-start gap-3">
+              <span class="text-taupe mt-1 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span class="text-text-light">{benefit}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- Proceso -->
+      <section class="mb-12">
+        <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-text mb-4">¿Cómo es la sesión?</h2>
+        <p class="text-text-light leading-relaxed">{content.process}</p>
+      </section>
+
+      <!-- Marca -->
+      <section class="mb-12">
+        <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-text mb-4">Productos que utilizamos</h2>
+        <p class="text-text-light leading-relaxed">{content.brandText}</p>
+      </section>
+
+      <!-- Precio -->
+      <section class="mb-14">
+        <div class="border-y border-cream-dark">
+          <div class="grid grid-cols-2 sm:grid-cols-3 divide-x divide-cream-dark">
+            <div class="py-6 px-8">
+              <p class="label-overline mb-2">Precio por sesión</p>
+              <p class="font-heading text-2xl font-normal text-text">{service.price}</p>
+            </div>
+            <div class="py-6 px-8">
+              <p class="label-overline mb-2">Duración</p>
+              <p class="font-heading text-2xl font-normal text-text">{service.duration}</p>
+            </div>
+            {service.brand && (
+              <div class="py-6 px-8 col-span-2 sm:col-span-1 border-t sm:border-t-0 border-cream-dark">
+                <p class="label-overline mb-2">Producto</p>
+                <p class="font-heading text-lg font-normal text-text">{service.brand}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="mb-12">
+        <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-text mb-6">Preguntas frecuentes</h2>
+        <div class="space-y-6">
+          {content.faqs.map((faq) => (
+            <details class="group border-b border-cream-dark/50 pb-4">
+              <summary class="cursor-pointer list-none flex items-start justify-between gap-4 font-medium text-text hover:text-taupe transition-colors">
+                <span>{faq.question}</span>
+                <span class="text-taupe shrink-0 mt-1 group-open:rotate-45 transition-transform">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-text-light leading-relaxed">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="mb-14 border-y border-cream-dark py-14">
+        <div class="text-center">
+          <div class="divider-taupe mb-8"></div>
+          <p class="label-overline mb-4">Siguiente paso</p>
+          <h2 class="font-heading text-2xl sm:text-3xl font-normal text-text mb-3">
+            ¿Querés saber si este tratamiento es ideal para tu piel?
+          </h2>
+          <p class="text-text-light mb-8 max-w-sm mx-auto text-sm leading-relaxed">
+            Escribime por WhatsApp y agendamos una consulta personalizada.
+          </p>
+          <a
+            href="https://wa.me/595971614156"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary-wa"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Agendá tu turno por WhatsApp
+          </a>
+        </div>
+      </section>
+
+      <!-- Related services -->
+      {relatedServices.length > 0 && (
+        <section>
+          <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-text mb-6">Tratamientos relacionados</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {relatedServices.map((related) => (
+              <ServiceCard slug={related.slug} name={related.name} tagline={related.tagline} price={related.price} brand={related.brand} />
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  ) : (
+    <div class="max-w-4xl mx-auto px-4 py-12 text-center">
+      <p class="text-text-light">Contenido en preparación. Contactanos para más información sobre este servicio.</p>
+    </div>
+  )}
+
+  <!-- Schema markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaService)} />
+  {schemaFAQ && <script type="application/ld+json" set:html={JSON.stringify(schemaFAQ)} />}
+  <script type="application/ld+json" set:html={JSON.stringify(schemaBreadcrumb)} />
+
+  <Footer slot="footer" />
+</BaseLayout>
