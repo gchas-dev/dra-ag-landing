@@ -35,7 +35,7 @@
     "tagline": "Luminosidad y revitalización con tecnología avanzada",
     "price": "Gs. 1.300.000",
     "duration": "1 hora",
-    "brand": "Cellbooster",
+    "brand": "Suisselle",
     "category": "rejuvenecimiento",
     "featured": false
   },
@@ -76,6 +76,36 @@
     "price": "Gs. 550.000",
     "duration": "1 hora",
     "brand": "Janssen Cosmetics",
+    "category": "rejuvenecimiento",
+    "featured": false
+  },
+  {
+    "slug": "lifting-ritual-janssen-asuncion",
+    "name": "Lifting Ritual — Janssen Cosmetics",
+    "tagline": "Efecto lifting inmediato que tensa y redefine el contorno facial",
+    "price": "Gs. 550.000",
+    "duration": "1 hora",
+    "brand": "Janssen Cosmetics",
+    "category": "rejuvenecimiento",
+    "featured": false
+  },
+  {
+    "slug": "adn-salmon-toskani-asuncion",
+    "name": "ADN de Salmón — Toskani",
+    "tagline": "Regeneración tisular con PDRN y plan de cuidado en el hogar",
+    "price": "Gs. 700.000",
+    "duration": "1 hora",
+    "brand": "Toskani",
+    "category": "rejuvenecimiento",
+    "featured": false
+  },
+  {
+    "slug": "bioestimulacion-nctf-asuncion",
+    "name": "Bioestimulación con NCTF",
+    "tagline": "Más de 50 activos que estimulan colágeno y elastina",
+    "price": "Gs. 1.200.000",
+    "duration": "1 hora",
+    "brand": "Filorga",
     "category": "rejuvenecimiento",
     "featured": false
   },
