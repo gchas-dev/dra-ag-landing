@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+const waUrl = `https://wa.me/595971614156?text=${encodeURIComponent('Hola! Quiero agendar una consulta con la Dra. González. ¿Cuándo tienen disponibilidad?')}`;
 ---
 
 <BaseLayout
@@ -179,7 +181,7 @@ import Footer from '../components/Footer.astro';
       </p>
       <div class="divider-taupe mb-8"></div>
       <a
-        href="https://wa.me/595971614156"
+        href={waUrl}
         target="_blank"
         rel="noopener noreferrer"
         class="btn-primary-wa"

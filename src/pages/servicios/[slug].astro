@@ -14,6 +14,8 @@ export function getStaticPaths() {
 
 const { service } = Astro.props;
 
+const waUrl = `https://wa.me/595971614156?text=${encodeURIComponent(`Hola! Quiero agendar un turno para ${service.name}. ¿Cuándo tienen disponibilidad?`)}`;
+
 // Service-specific content
 const serviceContent: Record<string, {
   intro: string;
@@ -523,7 +525,7 @@ const schemaBreadcrumb = {
             Escribime por WhatsApp y agendamos una consulta personalizada.
           </p>
           <a
-            href="https://wa.me/595971614156"
+            href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
             class="btn-primary-wa"
