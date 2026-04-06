@@ -13,9 +13,9 @@
   {
     "slug": "estetica-facial-luque",
     "city": "Luque",
-    "distance": "20",
+    "distance": "10",
     "region": "Gran Asunción",
-    "intro": "Desde Luque hasta el consultorio de la Dra. Agustina González en Asunción son solo 20 minutos. Muchas pacientes de Luque eligen atenderse en nuestra clínica porque buscan tratamientos con productos de laboratorios internacionales y una profesional con formación certificada.",
+    "intro": "Desde Luque hasta el consultorio de la Dra. Agustina González en Asunción son solo 10 minutos. Muchas pacientes de Luque eligen atenderse en nuestra clínica porque buscan tratamientos con productos de laboratorios internacionales y una profesional con formación certificada.",
     "context": "Luque es una de las ciudades con mayor crecimiento en el Gran Asunción. La proximidad con la capital y la mejora en la conectividad vial hacen que cada vez más residentes de Luque accedan a tratamientos de estética profesional en Asunción.",
     "featuredServices": ["tratamiento-antiaging-asuncion", "exosomas-mediderma-asuncion", "mesoterapia-facial-asuncion"],
     "featuredServiceNames": ["Tratamiento Antiaging", "Exosomas Mediderma", "Mesoterapia Facial"],
@@ -24,10 +24,10 @@
   {
     "slug": "estetica-facial-lambae",
     "city": "Lambaré",
-    "distance": "10",
+    "distance": "30",
     "region": "Gran Asunción",
-    "intro": "Lambaré es una de las ciudades más cercanas a Asunción — a solo 10 minutos del consultorio de la Dra. Agustina González. Para las residentes de Lambaré que buscan tratamientos faciales de calidad, nuestra clínica es la opción más cercana con nivel internacional.",
-    "context": "Por su cercanía con la capital, Lambaré se integra naturalmente al circuito de servicios de Asunción. Muchas de nuestras pacientes de Lambaré aprovechan esa proximidad para hacer sus sesiones en horario de trabajo o antes de regresar a casa.",
+    "intro": "Desde Lambaré hasta el consultorio de la Dra. Agustina González en Asunción son 30 minutos. Para las residentes de Lambaré que buscan tratamientos faciales de calidad, nuestra clínica es la opción más completa del Gran Asunción con nivel internacional.",
+    "context": "Lambaré se integra naturalmente al circuito de servicios de Asunción. Muchas de nuestras pacientes de Lambaré hacen sus sesiones en horario de trabajo o antes de regresar a casa, con una distancia que no representa una barrera real.",
     "featuredServices": ["cellbooster-glow-asuncion", "tratamiento-ojeras-asuncion", "mesoterapia-facial-asuncion"],
     "featuredServiceNames": ["Cellbooster Glow", "Tratamiento de Ojeras", "Mesoterapia Facial"],
     "searchTerms": "estética facial Lambaré, dermatocosmiatra Lambaré, mesoterapia Lambaré"
@@ -35,9 +35,9 @@
   {
     "slug": "estetica-facial-fernando-de-la-mora",
     "city": "Fernando de la Mora",
-    "distance": "10",
+    "distance": "20",
     "region": "Gran Asunción",
-    "intro": "Desde Fernando de la Mora hasta el consultorio de la Dra. Agustina González en Asunción son apenas 10 minutos. Si buscás tratamientos faciales con productos de marcas internacionales y una profesional con doble formación médica, estás muy cerca.",
+    "intro": "Desde Fernando de la Mora hasta el consultorio de la Dra. Agustina González en Asunción son 20 minutos. Si buscás tratamientos faciales con productos de marcas internacionales y una profesional con doble formación médica, estás muy cerca.",
     "context": "Fernando de la Mora, con alta densidad poblacional y fácil acceso a Asunción, es una de las ciudades del Gran Asunción donde más consultas recibimos. La distancia mínima elimina cualquier barrera para acceder a tratamientos profesionales.",
     "featuredServices": ["mesoterapia-facial-asuncion", "tratamiento-antiaging-asuncion", "pdrn-salmon-mediderma-asuncion"],
     "featuredServiceNames": ["Mesoterapia Facial", "Tratamiento Antiaging", "PDRN de Salmón"],
@@ -57,10 +57,10 @@
   {
     "slug": "estetica-facial-villa-elisa",
     "city": "Villa Elisa",
-    "distance": "15",
+    "distance": "40",
     "region": "Gran Asunción",
-    "intro": "Si vivís en Villa Elisa, el consultorio de la Dra. Agustina González en el Barrio Santísima Trinidad de Asunción queda a solo 15 minutos. Cada vez más pacientes de Villa Elisa eligen nuestra clínica para sus tratamientos faciales.",
-    "context": "Villa Elisa es una ciudad residencial tranquila con fácil acceso a la capital. Sus residentes cuentan con todas las opciones de Asunción a pocos minutos, incluyendo tratamientos de estética facial de nivel internacional.",
+    "intro": "Desde Villa Elisa hasta el consultorio de la Dra. Agustina González en el Barrio Santísima Trinidad de Asunción son 40 minutos. Cada vez más pacientes de Villa Elisa eligen nuestra clínica porque los resultados y el nivel de atención justifican el viaje.",
+    "context": "Villa Elisa es una ciudad residencial tranquila cuyas residentes acceden a los servicios de Asunción con regularidad. Muchas de nuestras pacientes de Villa Elisa combinan su sesión con otras actividades en la capital, haciendo el traslado parte de su rutina de cuidado personal.",
     "featuredServices": ["mesoterapia-despigmentante-asuncion", "limpieza-facial-profunda-asuncion", "tratamiento-rosacea-asuncion"],
     "featuredServiceNames": ["Mesoterapia Despigmentante", "Limpieza Profunda + Peeling", "Tratamiento Rosácea"],
     "searchTerms": "estética facial Villa Elisa, dermatocosmiatra Villa Elisa, mesoterapia Villa Elisa"
@@ -68,9 +68,9 @@
   {
     "slug": "estetica-facial-capiata",
     "city": "Capiatá",
-    "distance": "20",
+    "distance": "40",
     "region": "Gran Asunción",
-    "intro": "Desde Capiatá al consultorio de la Dra. Agustina González en Asunción son 20 minutos. Ofrecemos tratamientos faciales personalizados con productos de laboratorios europeos para pacientes de toda el área metropolitana.",
+    "intro": "Desde Capiatá al consultorio de la Dra. Agustina González en Asunción son 40 minutos. Ofrecemos tratamientos faciales personalizados con productos de laboratorios europeos para pacientes de toda el área metropolitana.",
     "context": "Capiatá es una de las ciudades con mayor crecimiento del Gran Asunción. Muchas residentes de Capiatá viajan regularmente a Asunción para sus rutinas de cuidado personal — y los tratamientos de la Dra. González son parte de ese circuito para quienes priorizan resultados reales.",
     "featuredServices": ["mesoterapia-facial-asuncion", "tratamiento-acne-asuncion", "limpieza-facial-profunda-asuncion"],
     "featuredServiceNames": ["Mesoterapia Facial", "Tratamiento Acné", "Limpieza Profunda + Peeling"],

@@ -3,7 +3,7 @@ const navLinks = [
   { href: '/servicios', label: 'Servicios' },
   { href: '/sobre-mi', label: 'Sobre mí' },
   { href: '/contacto', label: 'Contacto' },
-  { href: '/faq', label: 'FAQ' },
+  { href: '/faq', label: 'Preguntas frecuentes' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -96,12 +96,12 @@ const currentPath = Astro.url.pathname;
             <span class="text-sm font-medium text-text">Paraguay</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-taupe ml-auto"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <!-- AR — link -->
-          <a
-            href="https://agustinagonzalez.com.ar"
+          <!-- AR — deshabilitado -->
+          <div
             role="option"
             aria-selected="false"
-            class="flex items-center gap-3 px-4 py-3 hover:bg-cream transition-colors"
+            aria-disabled="true"
+            class="flex items-center gap-3 px-4 py-3 cursor-not-allowed opacity-40"
           >
             <span class="flex flex-col overflow-hidden rounded-sm shrink-0" style="width:22px;height:15px;">
               <span style="flex:1;background:#74ACDF;"></span>
@@ -109,7 +109,8 @@ const currentPath = Astro.url.pathname;
               <span style="flex:1;background:#74ACDF;"></span>
             </span>
             <span class="text-sm text-text-light">Argentina</span>
-          </a>
+            <span class="text-[0.6rem] tracking-wider uppercase text-text-light ml-auto">Próximo</span>
+          </div>
         </div>
       </li>
     </ul>
@@ -147,14 +148,15 @@ const currentPath = Astro.url.pathname;
             <span class="text-sm font-medium text-text">Paraguay</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-taupe ml-auto"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <a href="https://agustinagonzalez.com.ar" role="option" aria-selected="false" class="flex items-center gap-3 px-4 py-3 hover:bg-cream transition-colors">
+          <div role="option" aria-selected="false" aria-disabled="true" class="flex items-center gap-3 px-4 py-3 cursor-not-allowed opacity-40">
             <span class="flex flex-col overflow-hidden rounded-sm shrink-0" style="width:22px;height:15px;">
               <span style="flex:1;background:#74ACDF;"></span>
               <span style="flex:1;background:#fff;"></span>
               <span style="flex:1;background:#74ACDF;"></span>
             </span>
             <span class="text-sm text-text-light">Argentina</span>
-          </a>
+            <span class="text-[0.6rem] tracking-wider uppercase text-text-light ml-auto">Próximo</span>
+          </div>
         </div>
       </div>
 
