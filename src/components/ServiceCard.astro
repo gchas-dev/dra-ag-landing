@@ -3,11 +3,11 @@ interface Props {
   slug: string;
   name: string;
   tagline: string;
-  price: string;
+  price?: string;
   brand?: string | null;
 }
 
-const { slug, name, tagline, price, brand } = Astro.props;
+const { slug, name, tagline, brand } = Astro.props;
 ---
 
 <a
@@ -23,8 +23,7 @@ const { slug, name, tagline, price, brand } = Astro.props;
     </h3>
   </div>
   <p class="text-text-light text-sm leading-relaxed mb-6">{tagline}</p>
-  <div class="flex items-end justify-between">
-    <span class="font-heading text-lg text-text">{price}</span>
+  <div class="flex items-end justify-end">
     <span class="text-text-light text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
       Ver más
       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
