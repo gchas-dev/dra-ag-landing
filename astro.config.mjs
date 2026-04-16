@@ -6,6 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://agustinagonzalez.com.py',
+  trailingSlash: 'never',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()]
